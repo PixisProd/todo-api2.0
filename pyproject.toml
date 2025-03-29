@@ -12,6 +12,7 @@ uvicorn = "^0.34.0"
 sqlalchemy = "^2.0.40"
 pydantic-settings = "^2.8.1"
 asyncpg = "^0.30.0"
+pydantic = {extras = ["email"], version = "^2.11.1"}
 
 
 [build-system]

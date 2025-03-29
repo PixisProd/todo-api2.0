@@ -1,5 +1,7 @@
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
+from typing import Annotated
+
+from fastapi import Depends
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
 from src.config import settings
 from src.models import OrmBase
@@ -11,12 +13,15 @@ DATABASE_URL: str = f"postgresql+asyncpg://{settings.PG_USER}:{settings.PG_PASSW
 async_engine = create_async_engine(url=DATABASE_URL, future=True, echo=False)
 
 
-async_session_factory = async_sessionmaker(bind=async_engine)
+async_session_factory = async_sessionmaker(bind=async_engine, expire_on_commit=False)
 
 
 async def get_db():
     async with async_session_factory() as session:
         yield session
+
+
+db_dependency = Annotated[AsyncSession, Depends(get_db)]
 
 
 async def create_tables():
