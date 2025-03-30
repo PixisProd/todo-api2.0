@@ -6,6 +6,8 @@ class Settings(BaseSettings):
     PG_PASSWORD: str
     PG_DATABASE_NAME: str
 
+    JWT_SECRET_KEY: str
+    
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 settings = Settings()
