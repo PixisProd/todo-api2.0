@@ -7,7 +7,6 @@ from src.database import create_tables, delete_tables
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await delete_tables()
     await create_tables()
     yield
 
