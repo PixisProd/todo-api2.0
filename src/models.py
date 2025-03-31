@@ -21,4 +21,4 @@ class OrmUser(OrmBase):
     name: Mapped[str] = mapped_column(String, nullable=False)
     email: Mapped[str] = mapped_column(String, unique=True, nullable=False)
     role: Mapped[Roles] = mapped_column(Enum(Roles), default=Roles.user, server_default=text("'user'"), nullable=False)
-    is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default=text("true")) 
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default=text("true"))
