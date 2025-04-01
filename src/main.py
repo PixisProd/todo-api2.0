@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
 from src.auth.router import router as auth_router
+from src.todo.router import router as todo_router
 from src.database import create_tables, delete_tables
 
 
@@ -17,3 +18,4 @@ app = FastAPI(
 )
 
 app.include_router(router=auth_router)
+app.include_router(router=todo_router)
