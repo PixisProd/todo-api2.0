@@ -10,7 +10,10 @@ from src.config import settings
 from src.auth.dependencies import user_dependency
 
 
-router = APIRouter(prefix="/auth")
+router = APIRouter(
+    prefix="/auth",
+    tags=["Auth 🔐"]
+)
 
 
 @router.post("/register", status_code=status.HTTP_201_CREATED)
@@ -36,8 +39,3 @@ async def refresh_token(db: db_dependency, refresh_token: str = Cookie(default=N
     response = JSONResponse(content={"message": "Token successfully refreshed"}, status_code=status.HTTP_200_OK)
     response.set_cookie(key=settings.JWT_ACCESS_TOKEN_COOKIE_NAME, value=new_access_token, httponly=True)
     return response
-
-
-@router.get("/secured-place", status_code=status.HTTP_200_OK)
-async def secured_place(user: user_dependency):
-    return user
