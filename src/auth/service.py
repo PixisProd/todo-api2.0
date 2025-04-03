@@ -23,6 +23,7 @@ async def register_user(data: UserRegistration, db: AsyncSession) -> None:
     data.password = bcrypt_context.hash(data.password)
     db.add(OrmUser(**data.model_dump()))
     try:
+        await db.flush()
         await db.commit()
     except IntegrityError as e:
         await db.rollback()
