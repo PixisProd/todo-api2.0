@@ -17,6 +17,8 @@ passlib = "^1.7.4"
 bcrypt = "4.0.1"
 python-multipart = "^0.0.20"
 pyjwt = "^2.10.1"
+alembic = "^1.15.2"
+psycopg2 = "^2.9.10"
 
 
 [build-system]

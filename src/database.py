@@ -6,8 +6,9 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 from src.config import settings
 from src.models import OrmBase
 
-
-DATABASE_URL: str = f"postgresql+asyncpg://{settings.PG_USER}:{settings.PG_PASSWORD}@{settings.PG_HOST}/{settings.PG_DATABASE_NAME}"
+DATABASE_URL_DIALECT: str = f"postgresql+asyncpg://"
+DATABASE_URL_PARAMETERS: str = f"{settings.PG_USER}:{settings.PG_PASSWORD}@{settings.PG_HOST}/{settings.PG_DATABASE_NAME}"
+DATABASE_URL: str = DATABASE_URL_DIALECT + DATABASE_URL_PARAMETERS
 
 
 async_engine = create_async_engine(url=DATABASE_URL, future=True, echo=False)
