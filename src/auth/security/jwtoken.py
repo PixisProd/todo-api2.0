@@ -7,7 +7,7 @@ from starlette import status
 from src.config import settings
 
 
-ACCESS_TOKEN_LIFETIME = datetime.timedelta(minutes=30)
+ACCESS_TOKEN_LIFETIME = datetime.timedelta(minutes=15)
 REFRESH_TOKEN_LIFETIME = datetime.timedelta(days=7)
 
 

@@ -1,5 +1,3 @@
-from typing import List
-
 from fastapi import HTTPException
 from starlette import status
 from sqlalchemy import select

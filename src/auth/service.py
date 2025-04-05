@@ -19,6 +19,15 @@ ACCESS_TOKEN_PAYLOAD_EMAIL_KEY = "email"
 ACCESS_TOKEN_PAYLOAD_ROLE_KEY = "role"
 
 
+async def get_user(user_id: int, db: AsyncSession) -> OrmUser:
+    query = select(OrmUser).where(OrmUser.id == user_id)
+    result = await db.execute(query)
+    user = result.scalar_one_or_none()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    return user
+
+
 async def register_user(data: UserRegistration, db: AsyncSession) -> None:
     data.password = bcrypt_context.hash(data.password)
     db.add(OrmUser(**data.model_dump()))
