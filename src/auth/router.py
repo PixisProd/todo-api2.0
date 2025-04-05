@@ -16,13 +16,13 @@ router = APIRouter(
 )
 
 
-@router.post("/register", status_code=status.HTTP_201_CREATED)
+@router.post("/register", status_code=status.HTTP_201_CREATED, summary="Registration endpoint")
 async def register(body: UserRegistration, db: db_dependency):
     await register_user(data=body, db=db)
-    return JSONResponse(content={"detail": "User successfully created"}, status_code=status.HTTP_201_CREATED)
+    return JSONResponse(content={"message": "User successfully created"}, status_code=status.HTTP_201_CREATED)
 
 
-@router.post("/login", status_code=status.HTTP_200_OK)
+@router.post("/login", status_code=status.HTTP_200_OK, summary="Login endpoint")
 async def login(db: db_dependency, credentials: OAuth2PasswordRequestForm = Depends(OAuth2PasswordRequestForm)):
     access_token, refresh_token = await validate_user(credentials=credentials, db=db)
     response = JSONResponse(content={"message": "Successful login"}, status_code=status.HTTP_200_OK)
@@ -31,7 +31,7 @@ async def login(db: db_dependency, credentials: OAuth2PasswordRequestForm = Depe
     return response
 
 
-@router.post("/refresh-token", status_code=status.HTTP_200_OK)
+@router.post("/refresh-token", status_code=status.HTTP_200_OK, summary="Refresh access token endpoint")
 async def refresh_token(db: db_dependency, refresh_token: str = Cookie(default=None, alias=settings.JWT_REFRESH_TOKEN_COOKIE_NAME)):
     if not refresh_token:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Refresh token missing")

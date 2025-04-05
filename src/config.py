@@ -7,9 +7,9 @@ class Settings(BaseSettings):
     PG_DATABASE_NAME: str
 
     JWT_SECRET_KEY: str
-    JWT_ACCESS_TOKEN_COOKIE_NAME: str = "access_token"
-    JWT_REFRESH_TOKEN_COOKIE_NAME: str = "refresh_token"
-    JWT_ALGORITHM: str = "HS256"
+    JWT_ACCESS_TOKEN_COOKIE_NAME: str
+    JWT_REFRESH_TOKEN_COOKIE_NAME: str
+    JWT_ALGORITHM: str
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

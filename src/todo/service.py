@@ -27,15 +27,17 @@ async def get_user_task(user_id: int, db: AsyncSession, task_id: int):
     return task
 
 
-async def add_task_to_db(user_id: int, task: TodoRequest, db: AsyncSession) -> None:
+async def add_task_to_db(user_id: int, task: TodoRequest, db: AsyncSession) -> int:
     to_add = OrmTask(**task.model_dump())
     to_add.task_owner_id = user_id
     db.add(to_add)
     try:
+        await db.flush()
         await db.commit()
     except Exception as e:
         print(e)
         await db.rollback()
+    return to_add.id
 
 
 async def delete_user_task(user_id: int, task_id: int, db:AsyncSession) -> None:

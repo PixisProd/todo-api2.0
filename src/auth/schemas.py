@@ -6,3 +6,4 @@ class UserRegistration(BaseModel):
     password: str = Field(min_length=5, max_length=20, examples=["Trixp256"])
     name: str = Field(min_length=3, max_length=16, examples=["Spike"])
     email: EmailStr = Field(examples=["pixistheprotector@gmail.com"])
+    
