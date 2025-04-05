@@ -6,26 +6,29 @@ from src.admin.dependencies import admin_dependency
 from src.admin.service import deactivate_user, activate_user, get_all_users_from_db, get_all_todos_from_db
 
 
-router = APIRouter(prefix="/admin")
+router = APIRouter(
+    prefix="/admin",
+    tags=["Admin ⚡"]
+)
 
 
-@router.patch("/{user_id}/deactivate", status_code=status.HTTP_204_NO_CONTENT)
+@router.patch("/{user_id}/deactivate", status_code=status.HTTP_204_NO_CONTENT, summary="Deactivate user by ID")
 async def deactivate_user_by_id(db: db_dependency, _: admin_dependency, user_id: int = Path(gt=0)):
     await deactivate_user(user_id=user_id, db=db)
 
 
-@router.patch("/{user_id}/activate", status_code=status.HTTP_204_NO_CONTENT)
+@router.patch("/{user_id}/activate", status_code=status.HTTP_204_NO_CONTENT, summary="Activate user by ID")
 async def activate_user_by_id(db: db_dependency, _: admin_dependency, user_id: int = Path(gt=0)):
     await activate_user(user_id=user_id, db=db)
 
 
-@router.get("/users", status_code=status.HTTP_200_OK)
+@router.get("/users", status_code=status.HTTP_200_OK, summary="Get all users")
 async def get_all_users(db: db_dependency, _: admin_dependency):
     users = await get_all_users_from_db(db=db)
     return users
 
 
-@router.get("/todos", status_code=status.HTTP_200_OK)
+@router.get("/todos", status_code=status.HTTP_200_OK, summary="Get all todos")
 async def get_all_todos(db: db_dependency, _: admin_dependency):
     todos = await get_all_todos_from_db(db=db)
     return todos
