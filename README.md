@@ -1,4 +1,10 @@
 # 📌 To-Do API
+![Python](https://img.shields.io/badge/python-3.13-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-⚡-blue)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-🧪-blue)
+![Alembic](https://img.shields.io/badge/Alembic-⚗-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-🐘-blue)
+
 
 ## 📖 Description
 A fast and modern asynchronous To-Do API built with FastAPI and PostgreSQL.
