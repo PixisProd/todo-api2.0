@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     PG_USER: str = "postgres"
     PG_PASSWORD: str
     PG_DATABASE_NAME: str
+    PG_TEST_DATABASE_NAME: str
 
     JWT_SECRET_KEY: str
     JWT_ACCESS_TOKEN_COOKIE_NAME: str
