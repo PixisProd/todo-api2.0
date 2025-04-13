@@ -36,13 +36,13 @@ async def login(db: db_dependency, credentials: OAuth2PasswordRequestForm = Depe
     response.set_cookie(key=settings.JWT_REFRESH_TOKEN_COOKIE_NAME, value=refresh_token, httponly=True)
     return response
 
+
 @router.post("/logout", status_code=status.HTTP_200_OK, summary="Log out from account")
 async def logout(_: user_dependency):
     response = JSONResponse(content={"message": f"Successfully logout"})
     response.delete_cookie(key=settings.JWT_ACCESS_TOKEN_COOKIE_NAME)
     response.delete_cookie(key=settings.JWT_REFRESH_TOKEN_COOKIE_NAME)
     return response
-
 
 
 @router.post("/refresh-token", status_code=status.HTTP_200_OK, summary="Refresh access token endpoint")

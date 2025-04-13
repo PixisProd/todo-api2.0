@@ -11,6 +11,11 @@ class Settings(BaseSettings):
     JWT_ACCESS_TOKEN_COOKIE_NAME: str
     JWT_REFRESH_TOKEN_COOKIE_NAME: str
     JWT_ALGORITHM: str
+
+    TEST_USER_LOGIN: str
+    TEST_USER_PASSWORD: str
+    TEST_USER_NAME: str
+    TEST_USER_EMAIL: str
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

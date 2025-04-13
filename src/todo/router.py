@@ -23,7 +23,7 @@ async def get_all_user_tasks(user: user_dependency, db: db_dependency):
 @router.post("/tasks", status_code=status.HTTP_201_CREATED, summary="Create task")
 async def add_task_to_user(user: user_dependency, db: db_dependency, todo: TodoRequest):
     task_id = await add_task_to_db(user_id=int(user.get("sub")), task=todo, db=db)
-    return JSONResponse(content={"message": "Task successfully created", "task_id": task_id})
+    return {"message": "Task successfully created", "task_id": task_id}
 
 
 @router.get("/tasks/{task_id}", status_code=status.HTTP_200_OK, summary="Get user task by ID")
