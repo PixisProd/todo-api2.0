@@ -18,6 +18,7 @@ Includes secure authentication with JWT, role-based access control (RBAC), and a
 🛠️ Admin tools to manage users and their tasks  
 🧪 SQLAlchemy + Alembic for database management  
 🐘 PostgreSQL support
+🔬 Integrational tests for more stability
 
 ---
 
@@ -44,6 +45,7 @@ Includes secure authentication with JWT, role-based access control (RBAC), and a
 - **Database**: PostgreSQL 🐘
 - **ORM**: SQLAlchemy 🧪
 - **Migrations**: Alembic ⚗
+- **Tests**: Pytest 🔬
 
 ---
 
