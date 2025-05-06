@@ -54,7 +54,7 @@ Includes secure authentication with JWT, role-based access control (RBAC), and a
 ## 📦 Preparation
 1. **Clone the repository to your folder:**
 ```
-git clone https://github.com/PixisProd/todo-api.git
+git clone https://github.com/PixisProd/todo-api2.0.git
 ```
 
 2. **Install poetry:**
